@@ -1,0 +1,6 @@
+{
+  "events": {
+    "restart": "npm run refresh"
+  },
+  "ignore": ["styles/*", "assets/*"]
+}

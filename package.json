@@ -1,0 +1,42 @@
+{
+  "name": "we",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "we": "bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc",
+    "start": "node bin/index.js",
+    "dev": "nodemon src/index.ts",
+    "refresh": "npm run build && npm install -g .",
+    "figma-generate": "ts-node src/index.ts figma-generate"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@inquirer/input": "^1.2.5",
+    "axios": "^1.4.0",
+    "chalk": "^4.1.2",
+    "commander": "^11.0.0",
+    "figlet": "^1.6.0",
+    "ora": "5.4.1",
+    "svgps": "^0.8.0",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/figlet": "^1.5.6",
+    "@types/node": "^20.4.4",
+    "@types/yargs": "^17.0.24",
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  }
+}
