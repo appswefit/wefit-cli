@@ -21,7 +21,16 @@ we
 
 ## Comandos
 
-- figma-generate: Executa a exportação do DS e gera os arquivos no local da execução do comando:
+### Tradução
+
+Para rodar os comandos de tradução é preciso estar no mesmo nível da pasta locales
+
+- **translation-export**: Exporta os arquivos da pasta locales para xlsx
+- **translation-import**: Importa a planilha de tradução
+
+### Figma
+
+- **figma-generate**: Executa a exportação do DS e gera os arquivos no local da execução do comando:
 
   - /styles/config.json
   - /styles/global-styles.css
