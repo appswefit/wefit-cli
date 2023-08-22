@@ -26,13 +26,16 @@
     "axios": "^1.4.0",
     "chalk": "^4.1.2",
     "commander": "^11.0.0",
+    "exceljs": "^4.3.0",
     "figlet": "^1.6.0",
+    "lodash": "^4.17.21",
     "ora": "5.4.1",
     "svgps": "^0.8.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@types/figlet": "^1.5.6",
+    "@types/lodash": "^4.14.197",
     "@types/node": "^20.4.4",
     "@types/yargs": "^17.0.24",
     "nodemon": "^3.0.1",

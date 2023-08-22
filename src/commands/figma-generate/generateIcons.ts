@@ -2,8 +2,7 @@ import util from "util";
 import stream from "stream";
 const pipeline = util.promisify(stream.pipeline);
 import axios from "axios";
-import { createWriteStream, writeFileSync } from "fs";
-import { resolve } from "path";
+import { createWriteStream, writeFile } from "fs";
 import chalk from "chalk";
 import parseSvg from "svgps";
 
@@ -11,6 +10,7 @@ import FigmaClient from "../../infra/http/figmaClient";
 import { Node } from "../../infra/http/figmaClient.types";
 import loading from "../../utils/loading";
 import { handleCreateFolderPath } from "../../utils/handleCreateFolderPath";
+import { resolve } from "path";
 
 type IconGroup = Record<string, string>;
 
@@ -30,30 +30,25 @@ async function generateIconFolders(
   let iconNameType = "";
 
   handleCreateFolderPath(resolve("assets"));
-
   const iconsFolder = handleCreateFolderPath(resolve("assets", "icons"));
-
   const promises = iconList.map(async ({ nodeId, name, group }) => {
     const image = images[nodeId];
-
     const { data } = await axios.get(image, {
       responseType: "text",
     });
+    const regex: RegExp = /<defs[^>]*>[\s\S]*?<\/defs\s*>/g;
+    const svgWithoutDefs: string = data.replace(regex, "");
 
-    const iconGroupFolder = handleCreateFolderPath(resolve(iconsFolder, group));
+    // await pipeline(
+    //   svgWithoutDefs,
+    //   createWriteStream(resolve(iconGroupFolder, `${name}.svg`))
+    // );
 
-    await pipeline(
-      data,
-      createWriteStream(resolve(iconGroupFolder, `${name}.svg`))
-    );
-
-    const iconJson = parseSvg(data, { template: "icomoon" });
-
+    const iconJson = parseSvg(svgWithoutDefs, { template: "icomoon" });
     iconConfig[`${group}-${name}`] = iconJson;
   });
   await Promise.all(promises);
-
-  writeFileSync(
+  await util.promisify(writeFile)(
     resolve(iconsFolder, "config.json"),
     JSON.stringify(iconConfig)
   );
@@ -69,7 +64,17 @@ export default async function generateIcons(
 
     const iconToDownload: IconList = [];
 
-    (figmaNode.children as Node<"FRAME">[]).forEach((sectionNode) => {
+    console.log(figmaNode.children.map((el) => el.name));
+
+    const documentNode = figmaNode.children.find(
+      (el) => el.name === "document"
+    ) as Node<"FRAME">;
+
+    if (!documentNode) {
+      throw Error();
+    }
+
+    (documentNode.children as Node<"FRAME">[]).forEach((sectionNode) => {
       if (sectionNode.name === "skip") return;
       if (sectionNode.children.length === 0) return;
 

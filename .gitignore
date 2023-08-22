@@ -4,3 +4,5 @@ styles/
 bin/
 icons/
 we.json
+translation.xlsx
+locales/*
