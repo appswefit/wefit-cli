@@ -3,7 +3,7 @@ import { existsSync, readFileSync } from "fs";
 import { readdir } from "fs/promises";
 import { resolve } from "path";
 import { Border, Column, Fill, Style, Workbook } from "exceljs";
-import _, { isEmpty } from "lodash";
+import _ from "lodash";
 
 const thinBlackBorder: Partial<Border> = {
   color: {
@@ -257,6 +257,17 @@ export default async function translationExport() {
       translationCell.value = translationValue;
     });
   });
+
+  worksheet.autoFilter = {
+    from: {
+      column: 1,
+      row: 1,
+    },
+    to: {
+      column: worksheet.lastColumn.number,
+      row: worksheet.lastRow?.number ?? 0,
+    },
+  };
 
   workbook.xlsx.writeFile(resolve(currentDir, "translation.xlsx"));
 
