@@ -28,5 +28,15 @@ yargs(process.argv.slice(2))
     handler: () => translationImport(),
     aliases: ["translation-import", "ti"],
   })
+  .example([
+    ["$0 figma-generate", "Criar arquivo de estilos base"],
+    ["$0 fg", "Short syntax\n"],
+
+    ["$0 translation-export", "Exporta os arquivos da pasta locales para xlsx"],
+    ["$0 te", "Short syntax\n"],
+
+    ["$0 translation-import", "Importa a planilha de tradução"],
+    ["$0 ti", "Short syntax\n"],
+  ])
   .help("h")
   .alias("h", "help").argv;
