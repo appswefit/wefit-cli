@@ -1,24 +1,25 @@
-import { MIN_LENGTH_CREDENTIAL, TEXTS } from "./constants";
+import { GIT_COMMANDS, MIN_LENGTH_CREDENTIAL, TEXTS } from "./constants";
 import { ChoiceEnum } from "./interface";
 import {
-  execGitRemote,
+  execSetUrl,
   getClipboard,
-  getRemote,
+  getNewGitRemote,
+  getText,
   validateChoice,
   validatePath,
 } from "./utils";
 
 export default async function setGitRemoteCredential(credential: string) {
   if (!credential) {
-    console.log(TEXTS.invalid);
-    console.log(TEXTS.example);
-    console.log(TEXTS.exampleShort);
+    console.log(TEXTS.invalid.credential);
+    console.log(TEXTS.example.long);
+    console.log(TEXTS.example.short);
     return;
   }
 
   const size = credential.length;
   if (size < MIN_LENGTH_CREDENTIAL) {
-    console.log(TEXTS.invalidLength(size));
+    console.log(getText.invalid.length(size));
     return;
   }
 
@@ -26,28 +27,30 @@ export default async function setGitRemoteCredential(credential: string) {
 
   const { folderExists, folderPath } = await validatePath();
   if (!folderExists) {
-    console.log(TEXTS.invalidPath(folderPath));
+    console.log(getText.error.path(folderPath));
     return;
   }
 
-  console.log(TEXTS.insert(credential, folderPath));
+  try {
+    const { newRemoteUrl, options } = getNewGitRemote({
+      credential,
+      folderPath,
+    });
+    const args = [...GIT_COMMANDS.setUrl, newRemoteUrl];
+    const choice = await validateChoice();
+    if (choice === ChoiceEnum.ONE) {
+      execSetUrl({ args, options });
+      return;
+    }
 
-  const preparedRemote = getRemote({ credential, folderPath });
-  if (!preparedRemote) {
-    return;
+    if (choice === ChoiceEnum.TWO) {
+      getClipboard(args);
+      return;
+    }
+
+    console.log(TEXTS.error.reason);
+  } catch (error: any) {
+    const errorText = `[setGitRemoteCredential] - ${TEXTS.error.reason}`;
+    console.log(error?.message ?? errorText);
   }
-
-  const command = TEXTS.command(preparedRemote);
-  const choice = await validateChoice();
-  if (choice === ChoiceEnum.ONE) {
-    execGitRemote({ command, path: folderPath });
-    return;
-  }
-
-  if (choice === ChoiceEnum.TWO) {
-    getClipboard(command);
-    return;
-  }
-
-  console.log(TEXTS.invalidReason);
 }
