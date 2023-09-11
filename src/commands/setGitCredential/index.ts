@@ -44,7 +44,7 @@ export default async function setGitRemoteCredential(credential: string) {
     }
 
     if (choice === ChoiceEnum.TWO) {
-      getClipboard(args);
+      getClipboard(["git", ...args]);
       return;
     }
 
