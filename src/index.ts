@@ -36,7 +36,7 @@ yargs(process.argv.slice(2))
       const credential = process.argv[3];
       setGitRemoteCredential(credential);
     },
-    aliases: ["setGitCredential", "sgc"],
+    aliases: ["set-git-credential", "sgc"],
   })
   .example([
     ["$0 figma-generate", "Criar arquivo de estilos base"],
