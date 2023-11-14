@@ -11,6 +11,7 @@ import { Node } from "../../infra/http/figmaClient.types";
 import loading from "../../utils/loading";
 import { handleCreateFolderPath } from "../../utils/handleCreateFolderPath";
 import { resolve } from "path";
+import { processPromisesBatch } from "../../utils/processPromisesBatch";
 
 type IconGroup = Record<string, string>;
 
@@ -31,7 +32,7 @@ async function generateIconFolders(
 
   handleCreateFolderPath(resolve("assets"));
   const iconsFolder = handleCreateFolderPath(resolve("assets", "icons"));
-  const promises = iconList.map(async ({ nodeId, name, group }) => {
+  await processPromisesBatch(iconList,20,async ({group,name,nodeId}) => {
     const image = images[nodeId];
     const { data } = await axios.get(image, {
       responseType: "text",
@@ -39,15 +40,12 @@ async function generateIconFolders(
     const regex: RegExp = /<defs[^>]*>[\s\S]*?<\/defs\s*>/g;
     const svgWithoutDefs: string = data.replace(regex, "");
 
-    // await pipeline(
-    //   svgWithoutDefs,
-    //   createWriteStream(resolve(iconGroupFolder, `${name}.svg`))
-    // );
-
     const iconJson = parseSvg(svgWithoutDefs, { template: "icomoon" });
     iconConfig[`${group}-${name}`] = iconJson;
-  });
-  await Promise.all(promises);
+    console.log(iconConfig)
+  })
+  console.log(iconConfig)
+
   await util.promisify(writeFile)(
     resolve(iconsFolder, "config.json"),
     JSON.stringify(iconConfig)

@@ -41,16 +41,12 @@ Para rodar os comandos de tradução é preciso estar no mesmo nível da pasta l
 
 - **figma-generate**: Executa a exportação do DS e gera os arquivos no local da execução do comando:
 
-  - /styles/config.json
-  - /styles/global-styles.css
-  - /assets/(arquivos-das-logos).svg
   - /assets/icons/config.json
-  - /assets/icons/(groupo-de-icones)/(nome-do-icone).svg
 
   ### Ao exucetar o comando abaixo você vai precisar inserir dois token prompt:
 
   ```bash
-  we figma-generate
+  we figma-generate # we fg
   ```
 
   - Token de usuário do Figma, que pode ser gerado aqui:
@@ -59,6 +55,20 @@ Para rodar os comandos de tradução é preciso estar no mesmo nível da pasta l
 
   - ID do arquivo do Figma, você pode pegar na url logo após o *www.figma.com/file/*
     ![We FigmaUrl](./images/figma-url.png)
+
+  ### Atualizando a lista de tipagem de nomes dos ícones
+
+  Após executar a importação do figma e ter seu config.json atualizado é preciso seguir os seguintes passos:
+
+  - Adicionar em seu `package.json` o script:
+
+  ```
+  "update:icon": "node caminho/para-o-arquivo/generateIconType.js"
+  ```
+
+  - Executar `npm run update:icon`
+
+  Você encontrar o script `generateIconType.js` e o componente React que renderiza ícones a partir do `icon/config.json` [aqui](./templates/Icon/)
 
 ### Credencial Devops
 
@@ -76,6 +86,6 @@ A partir desse comando, será solicitado o _path_ do repositório que deverá se
 
 ## Templates
 
-Abaixo a lista com códigos que consumem os arquivos gerados pela CLI.
+Abaixo a lista de templates.
 
-- [Componente de ícone - React](./templates/Icon/)
+- [Componente de ícone icon/config.json - React](./templates/Icon/)
