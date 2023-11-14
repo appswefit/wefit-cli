@@ -41,7 +41,7 @@ yargs(process.argv.slice(2))
   })
   .command({
     command: "vscode-extensions",
-    describe: "Instala as extensões para VSCode recomendadas pela WeFit.",
+    describe: "Instala as extensões para VS Code recomendadas pela WeFit.",
     handler: () => {
       runVSCodeCommand();
     },
@@ -65,7 +65,7 @@ yargs(process.argv.slice(2))
 
     [
       "$0 vscode-extensions",
-      "Instala as extensões para VSCode recomendadas pela WeFit.",
+      "Instala as extensões para VS Code recomendadas pela WeFit.",
     ],
     ['$0 ve', "Short syntax\n"],
   ])

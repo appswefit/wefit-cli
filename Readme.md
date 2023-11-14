@@ -47,7 +47,7 @@ Para rodar os comandos de tradução é preciso estar no mesmo nível da pasta l
   - /assets/icons/config.json
   - /assets/icons/(groupo-de-icones)/(nome-do-icone).svg
 
-  ### Ao exucetar o comando abaixo você vai precisar inserir dois token prompt:
+  ### Ao executar o comando abaixo você vai precisar inserir dois token prompt:
 
   ```bash
   we figma-generate
@@ -73,6 +73,16 @@ we set-git-credential sua_nova_credencial # we sgc sua_nova_credencial
 A partir desse comando, será solicitado o _path_ do repositório que deverá ser atualizado e o que você quer fazer, executar o comando ou copiar para a área de transferência.
 
 ![Comando `we sgc` executado por completo](./images/set-git-credential.png)
+
+### VS Code Extensions
+
+- **vscode-extensions**: Instala as extensões para VS Code recomendadas pela WeFit.
+
+```bash
+we vscode-extensions # we ve
+```
+
+![Comando `we vscode-extensions`](./images/vscode-extensions.png)
 
 ## Templates
 

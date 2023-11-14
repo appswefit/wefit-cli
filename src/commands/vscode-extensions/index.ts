@@ -1,6 +1,7 @@
 import { spawnSync } from "child_process";
 import chalk from "chalk";
 import loading from "../../utils/loading";
+import axios from "axios";
 
 async function runVSCodeCommand() {
 
@@ -9,8 +10,9 @@ async function runVSCodeCommand() {
   try {
 
     fetchLoading.start();
-    const extensions = await fetch('https://raw.githubusercontent.com/appswefit/wefit-cli-gist/master/vs-code-extensions.json');
-    const extensionsJson = await extensions.json();
+    const response = await axios.get('https://raw.githubusercontent.com/appswefit/wefit-cli-gist/master/vs-code-extensions.json');
+    const extensionsJson = response.data;
+
     fetchLoading.stop();
   
     for (let extension of extensionsJson.extensions) {
