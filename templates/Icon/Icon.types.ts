@@ -1,10 +1,11 @@
-// import iconSet from './path-to/icons/config.json';
+import iconSet from "./IconNames";
 
-export type IconNames = keyof typeof iconSet;
+export type IconNames = iconSet;
 
 export interface IconProps extends React.SVGAttributes<SVGSVGElement> {
   name: IconNames;
   size?: number;
+  notification?: string;
 }
 
 export interface IIconStylesProps {
