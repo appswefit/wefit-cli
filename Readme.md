@@ -68,7 +68,7 @@ Para rodar os comandos de tradução é preciso estar no mesmo nível da pasta l
 
   - Executar `npm run update:icon`
 
-  Você encontrar o script `generateIconType.js` e o componente React que renderiza ícones a partir do `icon/config.json` [aqui](./templates/Icon/)
+  Você encontra o script `generateIconType.js` e o componente React que renderiza ícones a partir do `icon/config.json` [aqui](./templates/Icon/)
 
 ### Credencial Devops
 
