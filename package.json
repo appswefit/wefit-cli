@@ -34,7 +34,7 @@
     "figlet": "^1.6.0",
     "lodash": "^4.17.21",
     "ora": "5.4.1",
-    "svgps": "^0.8.0",
+    "svgps": "git+https://github.com/appswefit/svgps.git",
     "yargs": "^17.7.2"
   },
   "devDependencies": {

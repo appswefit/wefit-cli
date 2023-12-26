@@ -264,7 +264,7 @@ export default async function translationExport() {
       row: 1,
     },
     to: {
-      column: worksheet.lastColumn.number,
+      column: worksheet.lastColumn?.number ?? 0,
       row: worksheet.lastRow?.number ?? 0,
     },
   };
