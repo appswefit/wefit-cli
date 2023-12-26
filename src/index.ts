@@ -7,6 +7,7 @@ import setGitRemoteCredential from "./commands/setGitCredential";
 import translationExport from "./commands/translatation-export";
 import translationImport from "./commands/translation-import";
 import wefitLogo from "./constants/wefitLogo";
+import runVSCodeCommand from "./commands/vscode-extensions";
 
 console.log(chalk.yellow(wefitLogo));
 
@@ -38,6 +39,14 @@ yargs(process.argv.slice(2))
     },
     aliases: ["set-git-credential", "sgc"],
   })
+  .command({
+    command: "vscode-extensions",
+    describe: "Instala as extensões para VS Code recomendadas pela WeFit.",
+    handler: () => {
+      runVSCodeCommand();
+    },
+    aliases: ["vscode-extensions", "ve"],
+  })
   .example([
     ["$0 figma-generate", "Criar arquivo de estilos base"],
     ["$0 fg", "Short syntax\n"],
@@ -53,6 +62,12 @@ yargs(process.argv.slice(2))
       "Atualiza a credencial do repositório",
     ],
     ['$0 sgc "your New Credential"', "Short syntax\n"],
+
+    [
+      "$0 vscode-extensions",
+      "Instala as extensões para VS Code recomendadas pela WeFit.",
+    ],
+    ['$0 ve', "Short syntax\n"],
   ])
   .help("h")
   .alias("h", "help").argv;
