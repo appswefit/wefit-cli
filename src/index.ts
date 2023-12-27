@@ -67,7 +67,7 @@ yargs(process.argv.slice(2))
       "$0 vscode-extensions",
       "Instala as extensões para VS Code recomendadas pela WeFit.",
     ],
-    ['$0 ve', "Short syntax\n"],
+    ["$0 ve", "Short syntax\n"],
   ])
   .help("h")
   .alias("h", "help").argv;
