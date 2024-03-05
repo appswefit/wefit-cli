@@ -94,6 +94,12 @@ we vscode-extensions # we ve
 
 ![Comando `we vscode-extensions`](./images/vscode-extensions.png)
 
+### Atualizar versão do projeto React Native
+
+Este comando facilita a atualização da versão dos projetos react native nos ambientes nativos (Android e iOS) para mais informações sobre esse fluxo acesse a documentação em [link da doc](https://www.notion.so/WIP-Controle-de-vers-es-no-React-Native-19279887e7e54f99b468fbfb9aeb7ae3)
+
+![Comando 'we rnbv' executado](./images/rn-bump-version.png)
+
 ## Templates
 
 Abaixo a lista de templates.
