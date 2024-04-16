@@ -8,6 +8,7 @@ import translationExport from "./commands/translatation-export";
 import translationImport from "./commands/translation-import";
 import wefitLogo from "./constants/wefitLogo";
 import runVSCodeCommand from "./commands/vscode-extensions";
+import bumpVersion from "./commands/rn-bump-version";
 
 console.log(chalk.yellow(wefitLogo));
 
@@ -47,6 +48,12 @@ yargs(process.argv.slice(2))
     },
     aliases: ["vscode-extensions", "ve"],
   })
+  .command({
+    command: 'rn-bump-version',
+    describe: 'Atualiza a versão do projeto React Native nos ambientes Android e iOS',
+    handler: () => bumpVersion(),
+    aliases: ['rn-bump-version', 'rnbv'],
+  })
   .example([
     ["$0 figma-generate", "Criar arquivo de estilos base"],
     ["$0 fg", "Short syntax\n"],
@@ -68,6 +75,12 @@ yargs(process.argv.slice(2))
       "Instala as extensões para VS Code recomendadas pela WeFit.",
     ],
     ["$0 ve", "Short syntax\n"],
+
+    [
+      "$0 rn-bump-version", 
+      "Atualiza a versão do projeto RN nas pastas nativas do Android e iOS",
+    ],
+    ["$0 rnbv", "Short syntax\n"]
   ])
   .help("h")
   .alias("h", "help").argv;
