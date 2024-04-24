@@ -102,7 +102,6 @@ export default async function generateIcons(
     
     console.log(chalk.green("\n✅ Ícones gerados com sucesso!"));
   } catch (error) {
-    console.log(error);
     console.log(chalk.red("\n❌ Erro ao gerar ícones"));
     throw new Error("Falha ao gerar ícones");
   } finally {
