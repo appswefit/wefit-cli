@@ -2,7 +2,7 @@ import util from "util";
 import stream from "stream";
 const pipeline = util.promisify(stream.pipeline);
 import axios from "axios";
-import { createWriteStream, writeFile } from "fs";
+import { writeFile } from "fs";
 import chalk from "chalk";
 import parseSvg from "svgps";
 
@@ -12,6 +12,7 @@ import loading from "../../utils/loading";
 import { handleCreateFolderPath } from "../../utils/handleCreateFolderPath";
 import { resolve } from "path";
 import { processPromisesBatch } from "../../utils/processPromisesBatch";
+import generateIconTypes from "./generateIconTypes";
 
 type IconGroup = Record<string, string>;
 
@@ -50,6 +51,8 @@ async function generateIconFolders(
     resolve(iconsFolder, "config.json"),
     JSON.stringify(iconConfig)
   );
+
+  await generateIconTypes(iconConfig);
 }
 
 export default async function generateIcons(
@@ -95,9 +98,9 @@ export default async function generateIcons(
     const result = await figmaClient.getNodeUrl(
       iconToDownload.map((el) => el.nodeId)
     );
-    console.log(chalk.green("\n✅ Ícones gerados com sucesso!"));
-
     await generateIconFolders(iconToDownload, result.images);
+    
+    console.log(chalk.green("\n✅ Ícones gerados com sucesso!"));
   } catch (error) {
     console.log(chalk.red("\n❌ Erro ao gerar ícones"));
     throw new Error("Falha ao gerar ícones");
