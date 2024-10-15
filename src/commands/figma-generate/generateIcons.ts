@@ -63,7 +63,7 @@ export default async function generateIcons(
   try {
     loader.start();
 
-    const iconToDownload: IconList = [];
+    const iconToDownload: IconList[] = [];
 
     console.log(figmaNode.children.map((el) => el.name));
 
@@ -84,22 +84,33 @@ export default async function generateIcons(
         if (sectionNode.children.length === 0) return;
 
         if (groupNode.name === "container") {
+          let containerIcons: IconList = [];
           (groupNode.children as Node<"FRAME">[]).forEach((iconNode) => {
-            iconToDownload.push({
+            containerIcons.push({
               group: sectionNode.name,
               nodeId: iconNode.id,
               name: iconNode.name,
-            });
+            })
           });
+          iconToDownload.push(containerIcons);
+          containerIcons = []
         }
       });
     });
 
-    const result = await figmaClient.getNodeUrl(
-      iconToDownload.map((el) => el.nodeId)
-    );
-    await generateIconFolders(iconToDownload, result.images);
-    
+    const result = await Promise.all(
+      iconToDownload.map(async containerNodes => 
+        await figmaClient.getNodeUrl(containerNodes.map(el => el.nodeId)))
+    )
+
+    const groupedIcons: IconList = iconToDownload.flatMap(i => i)
+    const groupedImages = result.reduce(
+      (acc, current) => {
+        return {...acc, ...current.images};
+      }, {} as Record<string, string>
+    )
+
+    await generateIconFolders(groupedIcons, groupedImages);
     console.log(chalk.green("\n✅ Ícones gerados com sucesso!"));
   } catch (error) {
     console.log(chalk.red("\n❌ Erro ao gerar ícones"));
