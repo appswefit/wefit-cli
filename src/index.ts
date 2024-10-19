@@ -64,23 +64,24 @@ yargs(process.argv.slice(2))
     ["$0 translation-import", "Importa a planilha de tradução"],
     ["$0 ti", "Short syntax\n"],
 
-    [
-      "$0 setGitCredential yourNewCredential",
-      "Atualiza a credencial do repositório",
-    ],
+    ["$0 setGitCredential yourNewCredential", "Atualiza a credencial do repositório"],
     ['$0 sgc "your New Credential"', "Short syntax\n"],
 
-    [
-      "$0 vscode-extensions",
-      "Instala as extensões para VS Code recomendadas pela WeFit.",
-    ],
+    ["$0 vscode-extensions","Instala as extensões para VS Code recomendadas pela WeFit."],
     ["$0 ve", "Short syntax\n"],
 
-    [
-      "$0 rn-bump-version", 
-      "Atualiza a versão do projeto RN nas pastas nativas do Android e iOS",
-    ],
-    ["$0 rnbv", "Short syntax\n"]
+    ["$0 rn-bump-version", "Atualiza a versão do projeto RN nas pastas nativas do Android e iOS"],
+    ["$0 rnbv", "Short syntax\n"],
+
+    ["$0 update-npmrc", "Atualize o \`.npmrc\` do usuário com as credenciais necessárias"],
+    ["$0 npmrc", "Short syntax\n"],
   ])
-  .help("h")
-  .alias("h", "help").argv;
+  .help("h", "Exibe informações detalhadas dos comandos suportados no WeFit CLI")
+  .alias("h", "help")
+  .version(
+    "v",
+    "Exibe a versão instalada do WeFit CLI",
+    chalk.bold("WeFit CLI v1.3.0\n\nPara maiores informações, consulte: https://github.com/appswefit/wefit-cli")
+  )
+  .alias("v", "version")
+  .argv;
