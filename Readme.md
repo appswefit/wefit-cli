@@ -53,7 +53,7 @@ Para rodar os comandos de tradução é preciso estar no mesmo nível da pasta l
     ![We Sucesso](./images/user-config.png)
     ![We Sucesso](./images/generate-token.png)
 
-  - ID do arquivo do Figma, você pode pegar na url logo após o *www.figma.com/file/*
+  - ID do arquivo do Figma, você pode pegar na url logo após o *www.figma.com/design/*
     ![We FigmaUrl](./images/figma-url.png)
 
   ### Atualizando a lista de tipagem de nomes dos ícones
@@ -99,6 +99,22 @@ we vscode-extensions # we ve
 Este comando facilita a atualização da versão dos projetos react native nos ambientes nativos (Android e iOS) para mais informações sobre esse fluxo acesse a documentação em [link da doc](https://www.notion.so/WIP-Controle-de-vers-es-no-React-Native-19279887e7e54f99b468fbfb9aeb7ae3)
 
 ![Comando 'we rnbv' executado](./images/rn-bump-version.png)
+
+## Controle de Alterações com Changeset
+
+Ao realizar alterações neste projeto, é necessário atualizar o arquivo `CHANGELOG.md` para isso utilize o comando
+
+```bash
+  npm run changeset
+```
+
+Este comando irá criar um arquivo dentro da pasta `.changeset` na raiz do projeto, neste arquivo devem ser listadas todas as alterações realizadas, e ao final deve ser executado o comando.
+
+```bash
+  npm run version-packages
+```
+
+Com esse comando a versão do projeto e o arquivo `CHANGELOG.md` são atualizados.
 
 ## Templates
 
