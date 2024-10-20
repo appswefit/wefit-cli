@@ -2,13 +2,17 @@
 import chalk from "chalk";
 import yargs from "yargs";
 
-import figmaGenerate from "./commands/figma-generate";
-import setGitRemoteCredential from "./commands/setGitCredential";
-import translationExport from "./commands/translatation-export";
-import translationImport from "./commands/translation-import";
+import {
+  bumpVersion,
+  figmaGenerate,
+  npmCredentials,
+  runVSCodeCommand,
+  setGitRemoteCredential,
+  translationExport,
+  translationImport
+} from "./commands";
+import type { BaseProps } from "./commands/npmCredentials/utils";
 import wefitLogo from "./constants/wefitLogo";
-import runVSCodeCommand from "./commands/vscode-extensions";
-import bumpVersion from "./commands/rn-bump-version";
 
 console.log(chalk.yellow(wefitLogo));
 
@@ -53,6 +57,26 @@ yargs(process.argv.slice(2))
     describe: 'Atualiza a versão do projeto React Native nos ambientes Android e iOS',
     handler: () => bumpVersion(),
     aliases: ['rn-bump-version', 'rnbv'],
+  })
+  .command({
+    command: 'update-npmrc',
+    describe: 'Atualize o \`.npmrc\` do usuário com as credenciais necessárias',
+    handler: (argv: yargs.ArgumentsCamelCase<BaseProps>) => npmCredentials(argv),
+    aliases: ["update-npmrc", "npmrc"],
+    builder: {
+      email: {
+        describe: 'Email',
+        demandOption: true,
+        type: 'string',
+        alias: ['E'],
+      },
+      password: {
+        describe: 'Credencial gerada no link de referência da fábrica.\n- [Hapvida]: https://dev.azure.com/hapvidalabs/_details/security/tokens\n- [VoeAzul]: https://dev.azure.com/azuldevops/_usersSettings/tokens',
+        demandOption: true,
+        type: 'string',
+        alias: ['P'],
+      },
+    },
   })
   .example([
     ["$0 figma-generate", "Criar arquivo de estilos base"],
