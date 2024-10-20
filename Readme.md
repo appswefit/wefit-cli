@@ -140,6 +140,42 @@ we
   ![Comando 'we rnbv' executado](./images/rn-bump-version.png)
 </details>
 
+<details>
+  <summary>
+    <b>Criar ou atualizar o arquivo `.npmrc`</b>
+  </summary>
+
+  ### Criar ou atualizar o arquivo `.npmrc`
+  
+  Este comando facilita a criação do arquivo `.npmrc`, tanto na raiz da sua máquina quanto no local do repositório necessário. Caso você tenha dúvidas e queira mais informações, você pode ter mais informações acessando o [Storybook Azul](https://storybook-stg.voeazul.com.br/) ou [Storybook Hapvida](https://storybook-dev.hapvida.com.br/).
+
+  - Executando o comando `we update-npmrc` será mostrado a informação necessária.
+
+  ```bash
+  we update-npmrc # we npmrc
+  ```
+  ![Comando `we update-npmrc`](./images/update-npmrc.png)
+
+  - Executando o comando `we update-npmrc -E email@azul.com -P senhaNormal` com o e-mail inválido.
+  ```bash
+  we update-npmrc -E email@azul.com -P senhaNormal # we npmrc -E email@azul.com -P senhaNormal
+  ```
+  ![Comando `we update-npmrc -E email@azul.com -P senhaNormal` com o e-mail inválido](./images/npmrc-wrong-email.png)
+
+  - Executando o comando e escolhendo a 1ª opção.
+  ![Escolhendo a 1ª opção](./images/npmrc-first-option.png)
+
+  - Vendo o resultado da 1ª opção.
+  ![resultado da 1ª opção](./images/npmrc-result-first-option.png)
+
+  - Executando o comando e escolhendo a 2ª opção.
+  ![Escolhendo a 2ª opção](./images/npmrc-second-option.png)
+
+  - Vendo o resultado da 2ª opção.
+  ![resultado da 2ª opção](./images/npmrc-result-second-option.png)
+
+</details>
+
 ---
 
 ## Controle de Alterações com Changeset
