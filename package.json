@@ -1,7 +1,9 @@
 {
   "name": "wefit-cli",
-  "version": "1.3.0",
-  "description": "",
+  "version": "1.4.0",
+  "description": "CLI da WeFit para apoiar nossos Tech Designer's",
+  "author": "WeFit CLI Contributors",
+  "license": "ISC",
   "bin": {
     "we": "bin/index.js"
   },
@@ -22,8 +24,6 @@
   "keywords": [
     "cli"
   ],
-  "author": "",
-  "license": "ISC",
   "engines": {
     "node": ">=18.0.0"
   },
