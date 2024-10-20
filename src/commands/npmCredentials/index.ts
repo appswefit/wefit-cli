@@ -7,6 +7,12 @@ import { getHomeDir, getText } from "../setGitCredential/utils";
 import { MESSAGES_NPM_CREDENTIALS } from "./constants";
 import { createOrUpdateNpmrc, validateChoice, type BaseProps } from "./utils";
 
+/**
+ * Comando para criar um arquivo `npmrc` com credenciais.
+ *
+ * @param {ArgumentsCamelCase<BaseProps>} options - Opções do comando.
+ * @returns {Promise<void>} Promessa que resolve quando o comando é executado com sucesso.
+ */
 export default async function npmCredentials({ email, password }: ArgumentsCamelCase<BaseProps>) {
   const currentDir = process.cwd();
   const userPath = await promptUser(MESSAGES_NPM_CREDENTIALS.prompt.getRepositoryPathPrompt(currentDir));
