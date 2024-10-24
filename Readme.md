@@ -1,5 +1,7 @@
 # WeFit CLI
 
+![GitHub contributors](https://img.shields.io/github/contributors/appswefit/wefit-cli)
+
 Ferramenta desenvolvida pela WeFit para auxiliar nossos TechDesigners.
 
 ## Instalação
@@ -18,28 +20,47 @@ we
 
 ![We Sucesso](./images/we-success.png)
 
+---
+
 ## Comandos
 
-### Ajuda
+<details>
+  <summary>
+    <b>Ajuda</b>
+  </summary>
 
-Para verificar os possíveis comandos
+  ### Ajuda
 
-```bash
-we -h
-```
+  Para verificar os possíveis comandos
 
-![Comando de ajuda, `we -h` executado](./images/help.png)
+  ```bash
+  we -h
+  ```
 
-### Tradução
+  ![Comando de ajuda, `we -h` executado](./images/help.png)
+</details>
 
-Para rodar os comandos de tradução é preciso estar no mesmo nível da pasta locales
+<details>
+  <summary>
+    <b>Tradução</b>
+  </summary>
 
-- **translation-export**: Exporta os arquivos da pasta locales para xlsx
-- **translation-import**: Importa a planilha de tradução
+  ### Tradução
 
-### Figma
+  Para rodar os comandos de tradução é preciso estar no mesmo nível da pasta locales
 
-- **figma-generate**: Executa a exportação do DS e gera os arquivos no local da execução do comando:
+  - **translation-export**: Exporta os arquivos da pasta locales para xlsx
+  - **translation-import**: Importa a planilha de tradução
+</details>
+
+<details>
+  <summary>
+    <b>Figma</b>
+  </summary>
+
+  ### Figma
+
+  - **figma-generate**: Executa a exportação do DS e gera os arquivos no local da execução do comando:
 
   - /assets/icons/config.json
 
@@ -69,36 +90,93 @@ Para rodar os comandos de tradução é preciso estar no mesmo nível da pasta l
   - Executar `npm run update:icon`
 
   Você encontra o script `generateIconType.js` e o componente React que renderiza ícones a partir do `icon/config.json` [aqui](./templates/Icon/)
+</details>
 
-### Credencial Devops
+<details>
+  <summary>
+    <b>Credencial Devops</b>
+  </summary>
 
-Para executar o comando de atualização de credencial, você pode estar em qualquer parte do sistema.
+  ### Credencial Devops
 
-- **set-git-credential**: Seta a nova credencial para o repositório
+  Para executar o comando de atualização de credencial, você pode estar em qualquer parte do sistema.
 
-```bash
-we set-git-credential sua_nova_credencial # we sgc sua_nova_credencial
-```
+  - **set-git-credential**: Seta a nova credencial para o repositório
 
-A partir desse comando, será solicitado o _path_ do repositório que deverá ser atualizado e o que você quer fazer, executar o comando ou copiar para a área de transferência.
+  ```bash
+  we set-git-credential sua_nova_credencial # we sgc sua_nova_credencial
+  ```
 
-![Comando `we sgc` executado por completo](./images/set-git-credential.png)
+  A partir desse comando, será solicitado o _path_ do repositório que deverá ser atualizado e o que você quer fazer, executar o comando ou copiar para a área de transferência.
 
-### VS Code Extensions
+  ![Comando `we sgc` executado por completo](./images/set-git-credential.png)
+</details>
 
-- **vscode-extensions**: Instala as extensões para VS Code recomendadas pela WeFit.
+<details>
+  <summary>
+    <b>VS Code Extensions</b>
+  </summary>
 
-```bash
-we vscode-extensions # we ve
-```
+  ### VS Code Extensions
 
-![Comando `we vscode-extensions`](./images/vscode-extensions.png)
+  - **vscode-extensions**: Instala as extensões para VS Code recomendadas pela WeFit.
 
-### Atualizar versão do projeto React Native
+  ```bash
+  we vscode-extensions # we ve
+  ```
 
-Este comando facilita a atualização da versão dos projetos react native nos ambientes nativos (Android e iOS) para mais informações sobre esse fluxo acesse a documentação em [link da doc](https://www.notion.so/WIP-Controle-de-vers-es-no-React-Native-19279887e7e54f99b468fbfb9aeb7ae3)
+  ![Comando `we vscode-extensions`](./images/vscode-extensions.png)
+</details>
 
-![Comando 'we rnbv' executado](./images/rn-bump-version.png)
+<details>
+  <summary>
+    <b>Atualizar versão do projeto React Native</b>
+  </summary>
+
+  ### Atualizar versão do projeto React Native
+  
+  Este comando facilita a atualização da versão dos projetos react native nos ambientes nativos (Android e iOS) para mais informações sobre esse fluxo acesse a documentação em [link da doc](https://www.notion.so/WIP-Controle-de-vers-es-no-React-Native-19279887e7e54f99b468fbfb9aeb7ae3)
+
+  ![Comando 'we rnbv' executado](./images/rn-bump-version.png)
+</details>
+
+<details>
+  <summary>
+    <b>Criar ou atualizar o arquivo `.npmrc`</b>
+  </summary>
+
+  ### Criar ou atualizar o arquivo `.npmrc`
+  
+  Este comando facilita a criação do arquivo `.npmrc`, tanto na raiz da sua máquina quanto no local do repositório necessário. Caso você tenha dúvidas e queira mais informações, você pode ter mais informações acessando o [Storybook Azul](https://storybook-stg.voeazul.com.br/) ou [Storybook Hapvida](https://storybook-dev.hapvida.com.br/).
+
+  - Executando o comando `we update-npmrc` será mostrado a informação necessária.
+
+  ```bash
+  we update-npmrc # we npmrc
+  ```
+  ![Comando `we update-npmrc`](./images/update-npmrc.png)
+
+  - Executando o comando `we update-npmrc -E email@azul.com -P senhaNormal` com o e-mail inválido.
+  ```bash
+  we update-npmrc -E email@azul.com -P senhaNormal # we npmrc -E email@azul.com -P senhaNormal
+  ```
+  ![Comando `we update-npmrc -E email@azul.com -P senhaNormal` com o e-mail inválido](./images/npmrc-wrong-email.png)
+
+  - Executando o comando e escolhendo a 1ª opção.
+  ![Escolhendo a 1ª opção](./images/npmrc-first-option.png)
+
+  - Vendo o resultado da 1ª opção.
+  ![resultado da 1ª opção](./images/npmrc-result-first-option.png)
+
+  - Executando o comando e escolhendo a 2ª opção.
+  ![Escolhendo a 2ª opção](./images/npmrc-second-option.png)
+
+  - Vendo o resultado da 2ª opção.
+  ![resultado da 2ª opção](./images/npmrc-result-second-option.png)
+
+</details>
+
+---
 
 ## Controle de Alterações com Changeset
 
@@ -116,8 +194,25 @@ Este comando irá criar um arquivo dentro da pasta `.changeset` na raiz do proje
 
 Com esse comando a versão do projeto e o arquivo `CHANGELOG.md` são atualizados.
 
+---
+
 ## Templates
 
 Abaixo a lista de templates.
 
 - [Componente de ícone icon/config.json - React](./templates/Icon/)
+
+---
+
+## Contribuidores
+
+Agradecemos a todos que contribuíram para este projeto e tornaram a WeFit CLI ainda melhor!
+
+Para conhecer um pouco mais dos colaboradores, consulte abaixo:
+
+| [<img loading="lazy" title="Leonardo Fonseca" alt="Leonardo Fonseca" src="https://github.com/fonseca-leonardo.png" width="80"/>](https://github.com/fonseca-leonardo) | [<img loading="lazy" title="José Eduardo" alt="José Eduardo" src="https://github.com/jerp86.png" width="80"/>](https://github.com/jerp86) | [<img loading="lazy" title="Renan Bonassa" alt="Renan Bonassa" src="https://github.com/Bonassa.png" width="80"/>](https://github.com/Bonassa) | [<img loading="lazy" title="Mario Lima" alt="Mario Lima" src="https://github.com/limaCoder.png" width="80"/>](https://github.com/limaCoder) | [<img loading="lazy" title="João Luiz" alt="João Luiz" src="https://github.com/flammajl.png" width="80"/>](https://github.com/flammajl) | [<img loading="lazy" title="Vinícius Ponte" alt="Vinícius Ponte" src="https://github.com/ViniciusPonte.png" width="80"/>](https://github.com/ViniciusPonte) | [<img loading="lazy" title="Tiago Guimarães Pinto" alt="Tiago Guimarães Pinto" src="https://github.com/TiagoGP-exe.png" width="80"/>](https://github.com/TiagoGP-exe) |
+| --- | --- | --- | --- | --- | --- | --- |
+
+**Quer contribuir?**
+
+Sinta-se à vontade para abrir um pull request! :)
