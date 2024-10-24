@@ -1,4 +1,5 @@
 import type { NPM_RC } from "../constants";
+import type { FabricEnum } from "./fabric.enum";
 
 /**
  * Interface que define as propriedades básicas para autenticação.
@@ -23,7 +24,7 @@ export interface INpmrc extends BaseProps {
   /**
    * Tipo de fabric (por exemplo, 'hapvida' ou 'voeazul').
    */
-  fabric: 'hapvida' | 'voeazul';
+  fabric: FabricEnum;
 
   /**
    * Tipo de arquivo (por exemplo, 'homedir' ou 'project').

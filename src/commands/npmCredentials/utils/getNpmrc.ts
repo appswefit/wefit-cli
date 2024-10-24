@@ -1,4 +1,5 @@
 import { MESSAGES_NPM_CREDENTIALS, NPM_RC } from "../constants";
+import { FabricEnum } from "./fabric.enum";
 import type { INpmrc } from "./types";
 
 /**
@@ -7,14 +8,14 @@ import type { INpmrc } from "./types";
  * @param {INpmrc} options - Opções para gerar o conteúdo do arquivo `.npmrc`.
  * @param {string} options.email - E-mail do usuário.
  * @param {string} options.password - Senha do usuário em base64.
- * @param {string} options.fabric - Tipo de fabric (padrão: 'hap').
+ * @param {string} options.fabric - Tipo de fabric (padrão: FabricEnum.HAPVIDA).
  * @param {string} options.type - Tipo de arquivo (padrão: 'homedir').
  * @returns {string} Conteúdo do arquivo `.npmrc`.
  */
 export const getNpmrc = ({
   email = '',
   password = '',
-  fabric = 'hapvida',
+  fabric = FabricEnum.HAPVIDA,
   type = 'homedir',
 }: INpmrc): string => {
   if (!NPM_RC[type]) {

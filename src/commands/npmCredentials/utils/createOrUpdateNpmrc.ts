@@ -4,6 +4,7 @@ import path from "node:path";
 
 import { MESSAGES_NPM_CREDENTIALS } from "../constants";
 import { convertPasswordToBase64 } from "./convertPasswordToBase64";
+import { FabricEnum } from "./fabric.enum";
 import { getNpmrc } from "./getNpmrc";
 import type { INpmrc } from "./types";
 
@@ -21,7 +22,7 @@ import type { INpmrc } from "./types";
 export const createOrUpdateNpmrc = ({
   email = '',
   password = '',
-  fabric = 'hapvida',
+  fabric = FabricEnum.HAPVIDA,
   type = 'homedir',
   projectPath = os.homedir().trim() ?? '/',
 }: INpmrc): void => {

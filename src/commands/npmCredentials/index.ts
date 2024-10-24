@@ -5,7 +5,7 @@ import type { ArgumentsCamelCase } from "yargs";
 import promptUser from "../../utils/promptUser";
 import { getHomeDir, getText } from "../setGitCredential/utils";
 import { MESSAGES_NPM_CREDENTIALS } from "./constants";
-import { createOrUpdateNpmrc, validateChoice, type BaseProps } from "./utils";
+import { createOrUpdateNpmrc, FabricEnum, validateChoice, type BaseProps } from "./utils";
 
 /**
  * Comando para criar um arquivo `npmrc` com credenciais.
@@ -38,7 +38,7 @@ export default async function npmCredentials({ email, password }: ArgumentsCamel
     return;
   }
 
-  const fabric = isHap ? "hapvida" : "voeazul";
+  const fabric = isHap ? FabricEnum.HAPVIDA : FabricEnum.VOEAZUL;
   const type = choice === '1' ? "homedir" : "project";
   
   createOrUpdateNpmrc({ email, password, fabric, type, projectPath: folderPath })
