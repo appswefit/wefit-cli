@@ -178,41 +178,29 @@ we
 
 ---
 
-## Controle de Alterações com Changeset
-
-Ao realizar alterações neste projeto, é necessário atualizar o arquivo `CHANGELOG.md` para isso utilize o comando
-
-```bash
-  npm run changeset
-```
-
-Este comando irá criar um arquivo dentro da pasta `.changeset` na raiz do projeto, neste arquivo devem ser listadas todas as alterações realizadas, e ao final deve ser executado o comando.
-
-```bash
-  npm run version-packages
-```
-
-Com esse comando a versão do projeto e o arquivo `CHANGELOG.md` são atualizados.
-
----
-
 ## Templates
 
 Abaixo a lista de templates.
 
-- [Componente de ícone icon/config.json - React](./templates/Icon/)
+- [Componente de ícone para web - React](./templates/Icon/)
 
----
+- [Componente de ícone para mobile - React Native](./templates/mobile/)
 
-## Contribuidores
+## Como contribuir 🤝
 
 Agradecemos a todos que contribuíram para este projeto e tornaram a WeFit CLI ainda melhor!
 
-Para conhecer um pouco mais dos colaboradores, consulte abaixo:
+Para conhecer um pouco mais dos colaboradores, [consulte aqui](https://github.com/appswefit/wefit-cli/graphs/contributors)
 
-| [<img loading="lazy" title="Leonardo Fonseca" alt="Leonardo Fonseca" src="https://github.com/fonseca-leonardo.png" width="80"/>](https://github.com/fonseca-leonardo) | [<img loading="lazy" title="José Eduardo" alt="José Eduardo" src="https://github.com/jerp86.png" width="80"/>](https://github.com/jerp86) | [<img loading="lazy" title="Renan Bonassa" alt="Renan Bonassa" src="https://github.com/Bonassa.png" width="80"/>](https://github.com/Bonassa) | [<img loading="lazy" title="Mario Lima" alt="Mario Lima" src="https://github.com/limaCoder.png" width="80"/>](https://github.com/limaCoder) | [<img loading="lazy" title="João Luiz" alt="João Luiz" src="https://github.com/flammajl.png" width="80"/>](https://github.com/flammajl) | [<img loading="lazy" title="Vinícius Ponte" alt="Vinícius Ponte" src="https://github.com/ViniciusPonte.png" width="80"/>](https://github.com/ViniciusPonte) | [<img loading="lazy" title="Tiago Guimarães Pinto" alt="Tiago Guimarães Pinto" src="https://github.com/TiagoGP-exe.png" width="80"/>](https://github.com/TiagoGP-exe) |
-| --- | --- | --- | --- | --- | --- | --- |
+- [Veja como colaborar com esse projeto](./CONTRIBUTING.md)
 
-**Quer contribuir?**
+---
 
-Sinta-se à vontade para abrir um pull request! :)
+<p align="center">
+  <a href="https://wefit.com.br/">
+    <img width="75px" src="images/wefit-logo.jpeg">
+  </a>
+  <p align="center">
+    Construído e mantido pela <a href="https://wefit.com.br/">WeFit | Digital Service Design</a>.
+  </p>
+</p>
