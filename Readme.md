@@ -100,24 +100,23 @@ Este comando facilita a atualização da versão dos projetos react native nos a
 
 ![Comando 'we rnbv' executado](./images/rn-bump-version.png)
 
-## Controle de Alterações com Changeset
-
-Ao realizar alterações neste projeto, é necessário atualizar o arquivo `CHANGELOG.md` para isso utilize o comando
-
-```bash
-  npm run changeset
-```
-
-Este comando irá criar um arquivo dentro da pasta `.changeset` na raiz do projeto, neste arquivo devem ser listadas todas as alterações realizadas, e ao final deve ser executado o comando.
-
-```bash
-  npm run version-packages
-```
-
-Com esse comando a versão do projeto e o arquivo `CHANGELOG.md` são atualizados.
-
 ## Templates
 
 Abaixo a lista de templates.
 
 - [Componente de ícone icon/config.json - React](./templates/Icon/)
+
+## Como contribuir 🤝
+
+- [Veja como colaborar com esse projeto](./CONTRIBUTING.md)
+
+---
+
+<p align="center">
+  <a href="https://wefit.com.br/">
+    <img width="75px" src="images/wefit-logo.jpeg">
+  </a>
+  <p align="center">
+    Construído e mantido pela <a href="https://wefit.com.br/">WeFit | Digital Service Design</a>.
+  </p>
+</p>
