@@ -14,9 +14,30 @@ Nós aceitamos todo tipo de contribuição, não apenas código. Você pode cont
 
 ## Como contribuir com a base de código
 
-Todas as alterações na base de código deste repositório é realizada através da abertura de *pull requests*. Isso é pode ser feito criando um *fork* do projeto, fazendo as mudanças localmente e depois realizando a abertura do *pull request*
+Todas as alterações na base de código deste repositório é realizada através da abertura de *pull requests* seguindo este fluxo:
+#### 1 - Crie uma cópia local do repositório
 
-### Controle de Alterações com Changeset
+```bash
+git clone https://github.com/appswefit/wefit-cli.git
+cd wefit-cli
+```
+
+#### 2 - Crie uma nova branch
+
+```bash
+git checkout -b feature/awesome-new-feature
+```
+
+#### 3 - Faça o push das mudanças para o github
+
+```bash
+git push origin feature/awesome-new-feature
+```
+
+#### 4 - Abra a Pull Request
+Na própria interface do github ou através da CLI do próprio github, realize a abertura da pull request, apontando para a branch `main`
+
+## Controle de Alterações com Changeset
 
 Ao realizar alterações neste projeto, é necessário atualizar o arquivo `CHANGELOG.md` para isso utilize o comando
 
