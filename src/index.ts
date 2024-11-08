@@ -12,9 +12,11 @@ import {
   translationImport
 } from "./commands";
 import type { BaseProps } from "./commands/npmCredentials/utils";
-import wefitLogo from "./constants/wefitLogo";
+import { makeWeFitLogo } from "./factories/makeWeFitLogo";
 
-console.log(chalk.yellow(wefitLogo));
+const CLI_VERSION = '1.4.0'
+
+console.log(chalk.yellow(makeWeFitLogo(CLI_VERSION)));
 
 yargs(process.argv.slice(2))
   .command({
@@ -105,7 +107,7 @@ yargs(process.argv.slice(2))
   .version(
     "v",
     "Exibe a versão instalada do WeFit CLI",
-    chalk.bold("WeFit CLI v1.3.0\n\nPara maiores informações, consulte: https://github.com/appswefit/wefit-cli")
+    chalk.bold(`WeFit CLI v${CLI_VERSION}\n\nPara maiores informações, consulte: https://github.com/appswefit/wefit-cli`)
   )
   .alias("v", "version")
   .argv;
