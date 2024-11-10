@@ -13,8 +13,9 @@ import {
 } from "./commands";
 import type { BaseProps } from "./commands/npmCredentials/utils";
 import { makeWeFitLogo } from "./factories/makeWeFitLogo";
+import packageJson from "../package.json"
 
-const CLI_VERSION = '1.4.0'
+const CLI_VERSION = packageJson.version || "1.0.0";
 
 console.log(chalk.yellow(makeWeFitLogo(CLI_VERSION)));
 
