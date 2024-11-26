@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import chalk from "chalk";
 import keytar from "keytar";
 
@@ -29,9 +30,9 @@ export default async function figmaGenerate({
   console.log(chalk.yellow("🛠️ Vamos lá!"));
   
   let figmaUserToken = await getFigmaUserToken(userToken);
-  console.log(chalk.green("✅ Token recuperado com sucesso!"));
 
   const figmaFileId = filedId ?? (await promptUser("Informe o ID do arquivo no Figma"));
+
   await generateAssets(figmaUserToken, figmaFileId);
 }
 
@@ -42,7 +43,11 @@ async function getFigmaUserToken(userToken?: string) {
     figmaUserToken = await promptUser("Informe o seu token de usuário do Figma");
     await keytar.setPassword(SERVICE_NAME, ACCOUNT_NAME, figmaUserToken);
     console.log(chalk.green("Token armazenado com sucesso!"));
+
+    return figmaUserToken;
   }
+
+  console.log(chalk.green("✅ Token recuperado com sucesso!"));
 
   return figmaUserToken;
 }
@@ -70,11 +75,13 @@ async function generateAssets(userToken: string, fileId: string) {
     console.log(
       chalk.green("✅ Arquivos gerados com sucesso! Verifique nas pastas styles e assets")
     );
-  } catch (error: any) {
+  } catch (error) {
     figmaFetchFileLoading.stop();
     console.log(chalk.redBright("Opss! Algo deu errado."));
 
-    if (error.response?.status === 403 && error.response?.data?.err === "Invalid token") {
+    const isAxiosErrorAndTokenExpired = error instanceof AxiosError && error.response?.status === 403 && error.response?.data?.err === "Invalid token";
+
+    if (isAxiosErrorAndTokenExpired) {
       console.log(chalk.yellow("⚠️ Token inválido ou expirado. Vamos atualizar."));
       
       const newToken = await promptUser("Informe o novo token de usuário do Figma");
