@@ -5,7 +5,7 @@
   "author": "WeFit CLI Contributors",
   "license": "ISC",
   "bin": {
-    "we": "bin/index.js"
+    "we": "bin/src/index.js"
   },
   "repository": {
     "type": "git",
