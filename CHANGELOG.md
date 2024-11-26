@@ -1,5 +1,18 @@
 # wefit-cli
 
+## 1.5.0
+
+### Minor Changes
+
+ #### Feature
+
+  - Token de acesso do Figma passa a ser armazenado localmente para futuras execuções do comando `we figma-generate`
+  - Comando `we -v` passa a funcionar com a versão presente no `package.json`
+
+  #### Docs
+
+  - Alterado imagens do comando de criação do arquivo `.npmrc`
+
 ## 1.4.0
 
 ### Minor Changes
