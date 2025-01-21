@@ -1,5 +1,14 @@
 # wefit-cli
 
+## 1.6.1
+
+### Patch Changes
+
+#### Fixes
+
+- Corrigido erro no import da lib ffmpeg
+- Alterado cores dos prompts com baixo contraste
+
 ## 1.6.0
 
 ### Minor Changes
