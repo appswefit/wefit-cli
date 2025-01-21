@@ -1,9 +1,12 @@
 import chalk from 'chalk';
-import ffmpeg from 'fluent-ffmpeg';
 import inquirer from 'inquirer';
 import loading from "../../utils/loading";
 import fs from 'fs';
 import { removeQuotation } from './utils/removeQuotation';
+
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
+const ffmpeg = require('fluent-ffmpeg');
+ffmpeg.setFfmpegPath(ffmpegPath);
 
 async function compressVideo(inputPath: string, outputPath: string) {
   const compressingLoader = loading("");
@@ -14,9 +17,9 @@ async function compressVideo(inputPath: string, outputPath: string) {
     .on('start', () => compressingLoader.start('⏳ Processando e comprimindo o vídeo...'))
     .on('end', () => {
       compressingLoader.succeed(chalk.greenBright('✅ Vídeo comprimido com sucesso!'));
-      console.log(chalk.bgGreen(`\n O vídeo comprimido foi salvo em: ${outputPath}`));
+      console.log(chalk.green(`\n O vídeo comprimido foi salvo em: ${outputPath}`));
     })
-    .on('error', (error) => {
+    .on('error', (error: any) => {
       compressingLoader.fail(chalk.red(error.message));
     })
     
@@ -29,7 +32,7 @@ export default async function compressVideoPrompts() {
     const { inputPath } = await inquirer.prompt({
       type: 'input',
       name: 'inputPath',
-      message: chalk.yellow(`Digite o diretório ou ${chalk.bgYellow('arraste e solte')} o vídeo que deseja comprimido (ex: /Users/wefit/video.mov): `),
+      message: chalk.yellow(`Digite o diretório ou arraste e solte o vídeo que deseja comprimido (ex: /Users/wefit/video.mov): `),
       validate: (input) => {
         const inputPath = input.trim().replace(/^'|'$/g, '');
         if (!fs.existsSync(inputPath)) return `${chalk.red('Não foi possível encontrar o diretório informado do vídeo')}. Digite o diretório corretamente!`;        
