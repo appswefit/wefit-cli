@@ -1,5 +1,14 @@
 # wefit-cli
 
+## 1.6.2
+
+### Patch Changes
+
+#### Fixes
+
+- Remoção de caracteres especiais
+- Refatoração dos prompts
+
 ## 1.6.1
 
 ### Patch Changes
