@@ -9,7 +9,8 @@ import {
   runVSCodeCommand,
   setGitRemoteCredential,
   translationExport,
-  translationImport
+  translationImport,
+  compressVideo
 } from "./commands";
 import type { BaseProps } from "./commands/npmCredentials/utils";
 import { makeWeFitLogo } from "./factories/makeWeFitLogo";
@@ -82,6 +83,12 @@ yargs(process.argv.slice(2))
       },
     },
   })
+  .command({
+    command: 'compress-video',
+    describe: 'Comprime e salva um vídeo selecionado',
+    handler: () => compressVideo(),
+    aliases: ['compress-video', 'cv', 'compress', 'comprimir']
+  })
   .example([
     ["$0 figma-generate", "Criar arquivo de estilos base"],
     ["$0 fg", "Short syntax\n"],
@@ -103,6 +110,9 @@ yargs(process.argv.slice(2))
 
     ["$0 update-npmrc", "Atualize o \`.npmrc\` do usuário com as credenciais necessárias"],
     ["$0 npmrc", "Short syntax\n"],
+
+    ["$0 compress-video", "Comprime e salva um vídeo selecionado"],
+    ["$0 cv", "Short syntax\n"],
   ])
   .help("h", "Exibe informações detalhadas dos comandos suportados no WeFit CLI")
   .alias("h", "help")
