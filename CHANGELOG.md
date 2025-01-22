@@ -1,5 +1,13 @@
 # wefit-cli
 
+## 1.6.3
+
+### Patch Changes
+
+#### Fixes
+
+- Ajustes para funcionamento do compressor de vídeos no Windows
+
 ## 1.6.2
 
 ### Patch Changes
