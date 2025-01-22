@@ -19,7 +19,7 @@ export default async function compressVideoPrompts() {
         const inputPath = removeSpecialCharacters(input, platformOS);
         const fileExtension = inputPath.split('.').pop();
 
-        if (!(fileExtension && fileExtension in supportedFiles)) return `${chalk.red('O arquivo escolhido através deste diretório não é um tipo de arquivo suportado!')}. Insira um arquivo MOV ou MP4! (.mov | .mp4 no fim do nome do arquivo)}`;        
+        if (!(fileExtension && fileExtension in supportedFiles)) return `${chalk.red('O arquivo escolhido através deste diretório não é um tipo de arquivo suportado!')}. Insira um arquivo do tipo ${Object.values(supportedFiles).join(', ').toLocaleUpperCase()}!`;        
         if (!fs.existsSync(inputPath)) return `${chalk.red('Não foi possível encontrar o diretório informado do vídeo')}. Digite o diretório corretamente!`;        
         return true;
       },
