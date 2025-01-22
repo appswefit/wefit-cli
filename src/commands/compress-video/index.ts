@@ -4,10 +4,14 @@ import loading from "../../utils/loading";
 import fs from 'fs';
 import { removeSpecialCharacters } from './utils/removeSpecialCharacters';
 import { supportedFiles } from './utils/supportedFiles';
+import { platform } from 'os';
+import { OperatingSystemPlatforms } from './utils/operatingSystem';
 
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const ffmpeg = require('fluent-ffmpeg');
 ffmpeg.setFfmpegPath(ffmpegPath);
+
+const platformOS = platform() as OperatingSystemPlatforms;
 
 async function compressVideo(inputPath: string, outputPath: string) {
   const compressingLoader = loading("");
@@ -35,7 +39,7 @@ export default async function compressVideoPrompts() {
       name: 'inputPath',
       message: chalk.yellow(`Digite o diretório ou arraste e solte o vídeo que deseja comprimido (ex: /Users/wefit/video.mov): `),
       validate: (input) => {
-        const inputPath = removeSpecialCharacters(input);
+        const inputPath = removeSpecialCharacters(input, platformOS);
         const fileExtension = inputPath.split('.').pop();
 
         if (!(fileExtension && fileExtension in supportedFiles)) return `${chalk.red('O arquivo escolhido através deste diretório não é um tipo de arquivo suportado!')}. Insira um arquivo MOV ou MP4! (.mov ou .mp4 ao final do diretório)`;        
@@ -44,7 +48,7 @@ export default async function compressVideoPrompts() {
       },
     });
 
-    const cleanInputPath = removeSpecialCharacters(inputPath);
+    const cleanInputPath = removeSpecialCharacters(inputPath, platformOS);
     const filePath = cleanInputPath.split("/").slice(0, -1).join("/");
     const oldFileName = cleanInputPath.split("/").pop()?.split(".").shift();
     
