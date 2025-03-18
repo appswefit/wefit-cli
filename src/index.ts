@@ -10,7 +10,8 @@ import {
   setGitRemoteCredential,
   translationExport,
   translationImport,
-  compressVideo
+  compressVideo,
+  translatationIA
 } from "./commands";
 import type { BaseProps } from "./commands/npmCredentials/utils";
 import { makeWeFitLogo } from "./factories/makeWeFitLogo";
@@ -89,6 +90,12 @@ yargs(process.argv.slice(2))
     handler: () => compressVideo(),
     aliases: ['compress-video', 'cv', 'compress', 'comprimir']
   })
+  .command({
+    command: 'translation-ai',
+    describe: 'Traduz arquivos de dicionário para o idioma selecionado',
+    handler: () => translatationIA(),
+    aliases: ['tai', 'trans']
+  })
   .example([
     ["$0 figma-generate", "Criar arquivo de estilos base"],
     ["$0 fg", "Short syntax\n"],
@@ -113,6 +120,9 @@ yargs(process.argv.slice(2))
 
     ["$0 compress-video", "Comprime e salva um vídeo selecionado"],
     ["$0 cv | compress | comprimir", "Short syntax\n"],
+
+    ["$0 translation-ai", "Traduz arquivos de dicionário para o idioma selecionado"],
+    ["$0 trans | tai", "Short syntax\n"],
   ])
   .help("h", "Exibe informações detalhadas dos comandos suportados no WeFit CLI")
   .alias("h", "help")

@@ -6,7 +6,6 @@ import { supportedFiles } from './utils/supportedFiles';
 import { platformOS, slashFormatByPlatformOS } from './utils/operatingSystem';
 import { compressVideo } from './utils/compressVideo';
 
-
 export default async function compressVideoPrompts() {
   console.log(chalk.whiteBright('👇 Siga os passos abaixo para comprimir o vídeo! \n'));
 
