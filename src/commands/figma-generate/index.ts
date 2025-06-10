@@ -79,7 +79,7 @@ async function generateAssets(userToken: string, fileId: string) {
     figmaFetchFileLoading.stop();
     console.log(chalk.redBright("Opss! Algo deu errado."));
 
-    const isAxiosErrorAndTokenExpired = error instanceof AxiosError && error.response?.status === 403 && error.response?.data?.err === "Invalid token";
+    const isAxiosErrorAndTokenExpired = error instanceof AxiosError && error.response?.status === 403;
 
     if (isAxiosErrorAndTokenExpired) {
       console.log(chalk.yellow("⚠️ Token inválido ou expirado. Vamos atualizar."));
