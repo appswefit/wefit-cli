@@ -1,5 +1,13 @@
 # wefit-cli
 
+## 1.6.4
+
+### Patch Changes
+
+- #### Fixes
+
+  - Corrigido bug causado pela alteração da menagem de token expirado na API do Figma
+
 ## 1.6.3
 
 ### Patch Changes
